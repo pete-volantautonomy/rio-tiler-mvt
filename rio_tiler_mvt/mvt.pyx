@@ -119,10 +119,6 @@ cpdef bytes shapes_encoder(
         feature.set_id(v)
 
         polygon = geometry.shape(p)
-        # Simple GEOS Validation
-        if not polygon.is_valid:
-            # If the polygon is not valid we use a little trick
-            polygon = polygon.buffer(0)
 
         # add exterior ring
         feature.add_ring(len(polygon.exterior.coords))
